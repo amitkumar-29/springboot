@@ -10,7 +10,9 @@ public class UserService implements  IUserService {
 	IUserRepository userRepository;
 	@Override
 	public void save(User user) {
-System.out.println("saved");		
+		userRepository.save(user);
+
+    System.out.println("saved");		
 	}
 	
 
