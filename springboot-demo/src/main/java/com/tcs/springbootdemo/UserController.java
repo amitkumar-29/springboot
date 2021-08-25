@@ -11,10 +11,9 @@ public class UserController {
 	@Autowired  
 	IUserService userService;
 	
-	@GetMapping("/getuser")
-	private String getUser() {
-		System.out.println("called");
-		return "hello";
+	@GetMapping("/user")
+	private Iterable<User> getUser() {
+		return userService.getAllUsers();
 	}
 	@PostMapping("/user")
 	private void saveUser(@RequestBody User user) {
