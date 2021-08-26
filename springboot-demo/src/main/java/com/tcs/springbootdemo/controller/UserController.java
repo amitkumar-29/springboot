@@ -47,14 +47,18 @@ public class UserController {
 	   }
 	@PostMapping
 	private void saveUser(  @Valid @RequestBody  User user) {
-		userService.save(user);
-		System.out.println(user.getFirstName());
+		try {
+			userService.save(user);
+		} catch (Exception e) {
+			logger.error(e.getCause().toString());
+		}
+		logger.debug(user.getFirstName());
 	}
-	@PutMapping
-	private void updateUser(@RequestBody User user) {
-		userService.save(user);
-		System.out.println(user.getFirstName());
-	}
+//	@PutMapping
+//	private void updateUser(@RequestBody User user) {
+//		userService.save(user);
+//		System.out.println(user.getFirstName());
+//	}
 	@DeleteMapping("/{id}")
 	public void deleteUser(@PathVariable("id") Integer id) {
 		userService.deleteUser(id);
