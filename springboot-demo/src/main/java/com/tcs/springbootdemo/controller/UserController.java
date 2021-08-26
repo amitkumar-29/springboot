@@ -2,6 +2,8 @@ package com.tcs.springbootdemo.controller;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,7 +46,7 @@ public class UserController {
 	      return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
 	   }
 	@PostMapping
-	private void saveUser(@RequestBody User user) {
+	private void saveUser(  @Valid @RequestBody  User user) {
 		userService.save(user);
 		System.out.println(user.getFirstName());
 	}
